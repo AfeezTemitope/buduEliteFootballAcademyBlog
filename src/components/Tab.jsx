@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faFileAlt, faFutbol, faNewspaper, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faFileAlt, faFutbol, faNewspaper} from '@fortawesome/free-solid-svg-icons';
 import SignInAndSignUp from '../popUps/SignInAndSingUp';
 import {useNavigate} from "react-router-dom";
 
@@ -23,9 +23,9 @@ const Tab = () => {
                 <TabItem onClick={() => navigate('/')}>
                     <FontAwesomeIcon icon={faHome} /> Home
                 </TabItem>
-                <TabItem>
-                    <FontAwesomeIcon icon={faFileAlt} /> Post
-                </TabItem>
+                {/*<TabItem>*/}
+                {/*    <FontAwesomeIcon icon={faFileAlt} /> viewPost*/}
+                {/*</TabItem>*/}
                 <TabItem>
                     <FontAwesomeIcon icon={faFutbol} /> Premier League
                 </TabItem>
@@ -33,7 +33,7 @@ const Tab = () => {
                     <FontAwesomeIcon icon={faNewspaper} /> Team News
                 </TabItem>
                 <TabItem onClick={() => showModal(<SignInAndSignUp closeModal={closeModal} />)}>
-                    <FontAwesomeIcon icon={faSignInAlt} /> click ME😘
+                    <FontAwesomeIcon icon={faFileAlt} /> createPost😘
                 </TabItem>
             </TabContainer>
 
@@ -55,17 +55,21 @@ const TabContainer = styled.div`
     background: black;
     color: white;
     display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
+    padding: 5px;
+    justify-content: center;
+    gap:  50px;
+    position: sticky;
 `;
 
 const TabItem = styled.div`
     display: flex;
-    align-items: center;
     gap: 5px;
+    margin: 5px;
+    align-items: center;
+    font-size: 20px;
     cursor: pointer;
 
-    @media screen {
+    @media screen and (max-width:768px) {
         gap: 3px;
         font-size: 12px;
     }
