@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React, { useState } from 'react';
 import axios from 'axios';
+import { MdClose } from 'react-icons/md';
 
 const SignInAndSignUp = ({ closeModal }) => {
     const [loginCredentials, setLoginCredentials] = useState({ email: '', password: '' });
@@ -97,7 +98,9 @@ const SignInAndSignUp = ({ closeModal }) => {
                         />
                     </label>
                     <Button type="submit">Register</Button>
-                    <CancelButton type="button" onClick={closeModal}>Cancel</CancelButton>
+                    <CloseIconContainer onClick={closeModal}>
+                        <MdClose size={24} /> <CloseText>CLOSE</CloseText>
+                    </CloseIconContainer>
                 </form>
                 {responseMessage && <ResponseMessage>{responseMessage}</ResponseMessage>}
             </RegisterContainer>
@@ -170,4 +173,24 @@ const CancelButton = styled(Button)`
 const ResponseMessage = styled.p`
     color: yellow;
     margin-top: 10px;
+`;
+const CloseIconContainer = styled.div`
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+    color: #f44336;
+
+    &:hover {
+        color: #d32f2f;
+    }
+
+    svg {
+        margin-right: 5px;
+    }
+`;
+
+const CloseText = styled.span`
+    font-size: 16px;
 `;

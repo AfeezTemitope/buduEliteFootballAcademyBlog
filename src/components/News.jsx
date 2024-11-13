@@ -5,8 +5,6 @@ import axios from 'axios';
 const News = () => {
     const [news, setNews] = useState([]);
     const apiUrl = process.env.REACT_APP_API;
-    console.log(apiUrl);
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -61,7 +59,7 @@ const NewsItem = styled.div`
     background: #333;
     padding: 15px;
     border-radius: 5px;
-    overflow: hidden; /* Prevent overflow within the item */
+    overflow: hidden; 
 
     img {
         max-width: 100%;
