@@ -27,7 +27,7 @@ const SignInAndSignUp = ({ closeModal }) => {
     const handleLogin = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('https://budu-eliteflask.vercel.app/login', loginCredentials);
+            const response = await axios.post('https://backend-for-befa-blog.vercel.app/login', loginCredentials);
             setResponseMessage(response.data.message);
             alert('Welcome!');
             navigate('/post');
@@ -41,7 +41,7 @@ const SignInAndSignUp = ({ closeModal }) => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('https://budu-eliteflask.vercel.app/register', registerCredentials);
+            const response = await axios.post('https://backend-for-befa-blog.vercel.app/register', registerCredentials);
             setResponseMessage(response.data.message);
             alert('Registration successful! You can now log in.');
             window.location.reload();
