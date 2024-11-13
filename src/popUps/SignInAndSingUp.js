@@ -27,7 +27,7 @@ const SignInAndSignUp = ({ closeModal }) => {
     const handleLogin = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/login', loginCredentials);
+            const response = await axios.post('https://budu-eliteflask.vercel.app/login', loginCredentials);
             setResponseMessage(response.data.message);
             alert('Welcome!');
             navigate('/post');
