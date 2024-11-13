@@ -1,12 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Test</h1>
-    </div>
-  );
-}
+import React from "react";
+import { RouterProvider } from "react-router-dom";
+import routes from './routes'
+
+const App = () => {
+    return <RouterProvider router={routes} />;
+};
 
 export default App;
