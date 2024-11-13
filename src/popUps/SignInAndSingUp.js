@@ -27,27 +27,37 @@ const SignInAndSignUp = ({ closeModal }) => {
     const handleLogin = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('https://backend-for-befa-blog.vercel.app/login', loginCredentials);
+            const response = await axios.post('https://backend-for-befa-blog.vercel.app/login', loginCredentials, {
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            });
             setResponseMessage(response.data.message);
             alert('Welcome!');
             navigate('/post');
         } catch (error) {
             setResponseMessage('There was an error logging in.');
+            console.error("Login error:", error); // Log error for debugging
         }
         closeModal();
     };
 
     const handleRegister = async (event) => {
         event.preventDefault();
-
         try {
-            const response = await axios.post('https://backend-for-befa-blog.vercel.app/register', registerCredentials);
+            console.log('Registering with: ', registerCredentials);
+            const response = await axios.post('https://backend-for-befa-blog.vercel.app/register', registerCredentials, {
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            });
             setResponseMessage(response.data.message);
             alert('Registration successful! You can now log in.');
-            window.location.reload();
         } catch (error) {
             setResponseMessage('There was an error registering the user.');
-            window.location.reload();
+            console.error("Registration error:", error.response ? error.response.data : error.message);
         }
     };
 
