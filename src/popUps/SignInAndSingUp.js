@@ -2,10 +2,12 @@ import styled from 'styled-components';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { MdClose } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 const SignInAndSignUp = ({ closeModal }) => {
     const [loginCredentials, setLoginCredentials] = useState({ email: '', password: '' });
     const [registerCredentials, setRegisterCredentials] = useState({ username: '', email: '', password: '' });
+    const navigate = useNavigate();
     const [responseMessage, setResponseMessage] = useState('');
 
     const handleLoginChange = (event) => {
@@ -18,9 +20,20 @@ const SignInAndSignUp = ({ closeModal }) => {
         setRegisterCredentials({ ...registerCredentials, [name]: value });
     };
 
-    const handleLogin = (event) => {
+    const handleNavigate = (path) => {
+        navigate(path);
+    };
+
+    const handleLogin = async (event) => {
         event.preventDefault();
-        // Implement your login logic here
+        try {
+            const response = await axios.post('http://localhost:5000/login', loginCredentials);
+            setResponseMessage(response.data.message);
+            alert('Welcome!');
+            navigate('/post');
+        } catch (error) {
+            setResponseMessage('There was an error logging in.');
+        }
         closeModal();
     };
 
@@ -30,9 +43,11 @@ const SignInAndSignUp = ({ closeModal }) => {
         try {
             const response = await axios.post('http://localhost:5000/register', registerCredentials);
             setResponseMessage(response.data.message);
-            alert('After You register now wetin u de expect...baba login jhor no waste time')
+            alert('Registration successful! You can now log in.');
+            window.location.reload();
         } catch (error) {
             setResponseMessage('There was an error registering the user.');
+            window.location.reload();
         }
     };
 
@@ -42,11 +57,11 @@ const SignInAndSignUp = ({ closeModal }) => {
                 <form onSubmit={handleLogin}>
                     <h2>Login</h2>
                     <label>
-                        Username:
+                        Email:
                         <Input
-                            type="text"
-                            name="username"
-                            value={loginCredentials.username}
+                            type="email"
+                            name="email"
+                            value={loginCredentials.email}
                             onChange={handleLoginChange}
                             required
                         />
@@ -174,6 +189,7 @@ const ResponseMessage = styled.p`
     color: yellow;
     margin-top: 10px;
 `;
+
 const CloseIconContainer = styled.div`
     display: flex;
     align-items: center;
