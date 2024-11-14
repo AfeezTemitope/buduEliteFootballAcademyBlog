@@ -5,10 +5,12 @@ import axios from 'axios';
 const News = () => {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true);
+    const apiUrl = process.env.REACT_APP_API
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://budu-elite-b-ackend-flask.vercel.app/news');
+                const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiUrl}`);
+                console.log(response)
                 setNews(response.data.articles || []);
                 setLoading(false);
             } catch (error) {
