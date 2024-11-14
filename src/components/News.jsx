@@ -5,7 +5,8 @@ import axios from 'axios';
 const News = () => {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true);
-    const apiUrl = process.env.REACT_APP_API
+    const apiUrl = process.env.REACT_APP_NEWS_API
+    console.log(apiUrl)
     useEffect(() => {
         const fetchData = async () => {
             try {
