@@ -8,11 +8,28 @@ const News = () => {
     const apiUrl = process.env.REACT_APP_NEWS_API
     console.log(apiUrl)
     useEffect(() => {
+        // const fetchData = async () => {
+        //     try {
+        //         const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiUrl}`);
+        //         console.log(response)
+        //         setNews(response.data.articles || []);
+        //         setLoading(false);
+        //     } catch (error) {
+        //         console.error("Error fetching news:", error);
+        //         setLoading(false);
+        //     }
+        // };
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiUrl}`);
-                console.log(response)
-                setNews(response.data.articles || []);
+                const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiUrl}`);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log(data);
+                setNews(data.articles || []);
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching news:", error);
