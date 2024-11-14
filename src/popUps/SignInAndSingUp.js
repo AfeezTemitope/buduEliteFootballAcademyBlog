@@ -38,7 +38,7 @@ const SignInAndSignUp = ({ closeModal }) => {
             navigate('/post');
         } catch (error) {
             setResponseMessage('There was an error logging in.');
-            console.error("Login error:", error); // Log error for debugging
+            console.error("Login error:", error);
         }
         closeModal();
     };

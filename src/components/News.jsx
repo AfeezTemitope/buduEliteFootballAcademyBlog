@@ -8,7 +8,7 @@ const News = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/news');
+                const response = await axios.get('https://budu-elite-b-ackend-flask.vercel.app/news');
                 setNews(response.data.articles || []);
                 setLoading(false);
             } catch (error) {
