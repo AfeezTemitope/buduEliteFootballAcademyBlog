@@ -27,7 +27,7 @@ const SignInAndSignUp = ({ closeModal }) => {
     const handleLogin = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('https://backend-for-befa-blog.vercel.app/login', loginCredentials, {
+            const response = await axios.post('https://budu-elite-b-ackend-flask.vercel.app/login', loginCredentials, {
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ const SignInAndSignUp = ({ closeModal }) => {
         event.preventDefault();
         try {
             console.log('Registering with: ', registerCredentials);
-            const response = await axios.post('https://backend-for-befa-blog.vercel.app/register', registerCredentials, {
+            const response = await axios.post('https://budu-elite-b-ackend-flask.vercel.app/register', registerCredentials, {
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json'
