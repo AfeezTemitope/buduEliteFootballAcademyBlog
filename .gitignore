@@ -22,5 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-C:\Users\TbelzBby\Desktop\budu_elite_blog_using_react_and_node\.env
+#enviroment variable
 .env
