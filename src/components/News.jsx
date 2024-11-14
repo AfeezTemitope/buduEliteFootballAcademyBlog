@@ -20,7 +20,7 @@ const News = () => {
             }
         };
         fetchData();
-        }, []);
+        }, [apiUrl]);
     if (loading) {
         return <p>Loading...</p>;
     }
