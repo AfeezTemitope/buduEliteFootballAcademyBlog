@@ -9,7 +9,7 @@ const News = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('https://budu-elite-b-ackend-flask.vercel.app/news');
-                setNews(response.data.articles);
+                setNews(response.data.articles || []);
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching news:", error);
